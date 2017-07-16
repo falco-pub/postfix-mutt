@@ -1,0 +1,22 @@
+mydomain = pfix
+
+mynetworks_style = subnet
+
+message_size_limit = 51200000
+
+relayhost = [ssl.polytechnique.org]:587
+
+soft_bounce = yes 
+
+smtp_tls_security_level = secure 
+smtp_tls_cert_file = /etc/postfix/ssl.crt 
+smtp_tls_key_file = /etc/postfix/ssl.key 
+smtp_tls_CAfile = /etc/postfix/trusted.crt 
+smtp_tls_loglevel = 1 
+ 
+smtp_sasl_auth_enable = yes 
+smtp_sasl_security_options = noanonymous noplaintext noactive nodictionary 
+smtp_sasl_tls_security_options = noanonymous 
+smtp_sasl_mechanism_filter = plain login 
+smtp_sasl_password_maps = hash:/etc/postfix/user/saslpass 
+

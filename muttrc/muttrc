@@ -1,0 +1,114 @@
+# http://www.mutt.org/doc/manual/manual-6.html
+
+reset all		# reset all variables to system defaults.
+
+set autoedit 		# skip the initial send-menu (prompting for subject and recipients)
+set edit_headers	# put headers in editor when composing messages
+unset mark_old		# mark new articles as old, when leaving mbox
+set pager_stop		# Don't jump to next message at end of message.
+set rfc2047_parameters=yes	# decode RFC2047 parameters
+unset save_empty	# remove mailbox when last message is removed.
+
+# Quadoptions 
+set abort_nosubject=ask-no	# Abort, if message has no subject.
+set abort_unmodified=ask-no	# Abort, if message wasn't edited.
+set copy=ask-no		# ask to save a copy of outgoing message?
+set delete=yes		# ask for confirmation when deleting messages?
+set honor_followup_to=ask-yes	# Ask whether to honor Mail-Followup-To header.
+set include=ask-yes		# quote message, when replying
+set mime_fwd=ask-yes	# use MIME when forwarding mails.
+set mime_forward_rest=ask-yes	# forward attachments w/o autoview from attmenu
+set postpone=ask-no	# ask for postponing when doing an Abort.
+set print=ask-no	# ask whether you really want to print.
+set quit=ask-no		# ask before quitting.
+set recall=ask-no		# don't ask for using postponed message.
+set reply_to=ask-yes	# Use or ignore Reply-To.
+
+# Integers:
+set pager_index_lines=10	# add small message index at top of pager (10)
+
+# Sorting of the mails:
+set sort=threads	# sorting the mails in threads
+set sort_aux=date	# sorting the threads
+set sort_browser=reverse-date
+
+# Paths:
+set spoolfile=~/.maildir/inbox # Maildir incoming file (~/Mail/incoming)
+set folder=~/.maildir   # where are the mailboxes (+ and = are shortcuts)
+mailboxes ~/.maildir/inbox
+mailboxes `echo ~/.maildir/*`
+set editor="vim -c 'set tw=72' -c 'set ft=mail' -c 'set noautoindent' -c 'set comments=' -c '16'"
+set mbox=+inbox		# not used if "set move=no"
+set pager=builtin	# internal pager: "builtin" or e.g. "less -e" 
+set postponed=+postponed	# folder for postponed messages
+set mailcap_path='~/.mutt/mailcap'	# Use local mailcap only for mutt
+
+# Strings:
+set charset="UTF-8"	# Charset of Terminal (for display)
+set send_charset="us-ascii:iso-8859-1:iso-8859-15:utf-8"
+
+set mbox_type=mbox
+
+set mask="."			# Show these files in the file browser
+#set mask="!^\\.[^.]"		# Default
+
+# Format-Strings:
+set forw_format="Fwd: %s"
+set index_format="%4C %Z %[!%d.%m.%y] %-15.15F (%?M?C%3M&%4c?) %s"
+set pager_format="-%Z- %C/%m [%[%H:%M]] %-17.17n   %s"
+			# status line of the pager
+			# (show time here, date can be seen in "pil")
+set attribution='On %{%a, %d %b %Y}, %n wrote:\n'
+			# Default Reply-Intro (See send-hook for changes!)
+set status_format="-%r-%v--[%?M?%M/?%m msgs%?n?, %n new?%?d?, %d del?%?F?, %F flag?%?t?, %t tag?%?p?, %p postp?%?b?, %b inc?%?l?, %l?]--(%f)--%s-%>-%P-"
+
+
+set dsn_notify="failure,delay"
+set dsn_return="hdrs"
+
+
+auto_view text/richtext text/html text/x-sgml text/x-vcard text/x-sh \
+	text/x-csrc text/tex text/-xtex text/english \
+	application/x-tex application/x-dvi \
+	application/x-gzip-dvi application/x-diff-gzip application/x-gzip \
+	application/x-gunzip application/x-bzip2 \
+	application/x-cpio application/x-gtar \
+	application/x-tar application/x-tar-gz application/x-rar-compressed \
+	application/x-zip-compressed application/zip application/x-csh \
+	application/x-sh application/x-script application/x-shellscript \
+	application/x-latex application/x-tex application/x-shar \
+	application/x-troff application/x-troff-man application/x-troff-me \
+	application/x-pgp-message application/msword \
+	application/ms-tnef application/ms-word application/rtf \
+	application/octet-stream application/x-tcl application/x-perl \
+	application/x-debian-package message/partial \
+	application/msword text/x-vcard
+auto_view application/pgp-signature
+auto_view application/pgp
+auto_view application/x-zip-compressed
+auto_view application/x-arj-compressed
+auto_view application/x-delphi-source
+auto_view application/emacs-lisp
+auto_view text/html
+auto_view image/tiff
+auto_view text/x-lisp
+
+alternative_order text/plain text/enriched text/html
+
+
+source ~/.mutt/color
+
+source ~/.mutt/crypt
+
+source ~/.mutt/headers
+
+source ~/.mutt/hooks
+
+source ~/.mutt/keybind
+
+set alias_file=~/.mutt/aliases		# add the Aliases here
+source ~/.mutt/aliases			# and include all existing aliases
+
+source ~/.mutt/sidebar
+
+# vim:set syntax=muttrc:

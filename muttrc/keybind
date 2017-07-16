@@ -1,0 +1,81 @@
+# RE-READ MUTTRC
+macro index \eR ":source ~/.muttrc\n" "Re-read the muttrc"
+macro pager \eR ":source ~/.muttrc\n" "Re-read the muttrc"
+# FETCHMAIL
+#macro index \ef "!fetchmail\n" "fetchmail"
+#macro pager \ef "!fetchmail\n" "fetchmail"
+#macro browser  \ef "!fetchmail\n" "fetchmail"
+bind index     <f5>      imap-fetch-mail
+bind pager     <f5>      imap-fetch-mail
+# EDIT THE MESSAGE AND RESEND
+macro index \ee "<resend-message>f\=outbox\n" "Edit to resend message with complete header"
+macro pager \ee "<resend-message>f\=outbox\n" "Edit to resend message with complete header"
+
+# THREADS
+# NARROW TREE AND ASCII CHARS
+bind  index    <left>          collapse-thread
+bind  index    <right>          collapse-thread
+bind  index    <down>          next-entry
+bind  pager    <down>          next-entry
+bind  browser    <down>          next-entry
+bind  index    <up>          previous-entry
+bind  pager    <up>          previous-entry
+bind  browser    <up>          previous-entry
+
+macro index    \e<left>        ":toggle narrow_tree\r"
+macro index    \e<right>       ":toggle ascii_chars\r\CL"
+
+macro index V "|view -\n" "View mail with VIM"
+macro pager V "|view -\n" "View mail with VIM"
+macro browser V "|view -\n" "View mail with VIM"
+
+macro index M "T~N \nT~O \n;WN^t \n" "Mark all messages read"
+macro pager M "T~N \nT~O \n;WN^t \n" "Mark all messages read"
+macro browser M "T \n;WN^t \n" "Mark all messages read"
+
+macro index \eN "T~O \n;wN^T \n"	"Mark All Old to New"
+macro pager \eN "T~O \n;wN^T \n"	"Mark All Old to New"
+macro browser \eN "T~O \n;wN^T \n"	"Mark All Old to New"
+
+#macro index   \eD "\eVD~r>6m!~F\n\eV"		"Delete message 6 month old"
+#macro pager   \eD "\eVD~r>6m!~F\n\eV"		"Delete message 6 month old"
+#macro browser \eD "\eVD~r>6m!~F\n\eV"		"Delete message 6 month old"
+
+# Toogle ! flag
+# nb: overrides "shell-escape"
+bind index   ! flag-message		# Toggle Important message flag
+bind pager   ! flag-message            # Toggle Important message flag
+
+# Toogle tag
+bind index   * tag-entry
+bind browser   * tag-entry
+bind index   \e* tag-thread
+
+bind browser   ';'   tag-prefix
+
+# reverse-next (in the place of "mark-as-new"
+bind index     N     search-opposite
+# toggle new(read) (in the place of "recall-message")
+bind index     R     toggle-new
+
+# GPG save (KSP)
+macro index	\es	v<down>s\nq	"save attcht"
+macro pager	\es	v<down>s\nq	"save attcht"
+macro browser	\es	v<down>s\nq	"save attcht"
+
+# Move to spam_not_flagged
+# nb: overrides decode-save
+#macro index	\es	"s=spam_not_flagged\n"	"move to non-flagged spam folder"
+#macro pager	\es	"s=spam_not_flagged\n"	"move to non-flagged spam folder"
+#macro browser	\es	"s=spam_not_flagged\n"	"move to non-flagged spam folder"
+bind index	\eS	decode-save
+bind pager	\eS	decode-save
+
+# Move to archives
+macro index	\ea	"s=archives\n"	"move to archives folder"
+macro pager	\ea	"s=archives\n"	"move to archives folder"
+macro browser	\ea	"s=archives\n"	"move to archives folder"
+
+macro index	^S	"C=bogo_spam\ns=spam_not_flagged\n"	"feed bogo_spam + move to non-flagged spam folder"
+macro pager	^S	"C=bogo_spam\ns=spam_not_flagged\n"	"feed bogo_spam + move to non-flagged spam folder"
+macro browser   ^S	"C=bogo_spam\ns=spam_not_flagged\n"	"feed bogo_spam + move to non-flagged spam folder"

@@ -1,0 +1,55 @@
+#
+# color terminals:
+# (default, white, black, green, magenta, blue, cyan, yellow, red)
+# (bright...)
+# (color1,color2,...,colorN-1)
+#
+#     object	 foreground	background
+#
+color normal	 white		black	# normal text
+color indicator	 brightwhite	blue	# actual message
+#color tree	 brightmagenta	default	# thread arrows
+color status	 brightgreen	blue	# status line
+color error	 brightred	black	# errors
+color message	 red		black	# info messages
+color signature	 green		black	# signature
+color attachment brightyellow	red	# MIME attachments
+color search	 brightyellow	red	# search matches
+color tilde	 brightmagenta	black	# ~ at bottom of msg
+color markers	 red		black	# + at beginning of wrapped lines
+color hdrdefault blue		black	# default header lines
+color bold	 red		black	# hiliting bold patterns in body
+color underline	 green		black	# hiliting underlined patterns in body
+color quoted	 cyan		black	# quoted text
+color quoted1	 brightblue	black
+color quoted2	 magenta	black
+color quoted3	 brightred	black
+color quoted4	 red		black
+color quoted5	 blue		black
+color quoted6	 magenta	black
+color quoted7	 red		black
+color quoted8	 green		black
+color quoted9	 cyan		black
+#
+#     object	 foreground backg.   RegExp
+#
+color header	 brightred    black  "^X-Bogosity:"
+color header	 brightred    black  "^X-HSC-Bogosity:"
+color header	 brightmagenta    black "^(from|cc|to):"
+color header	 green         black "^(Resent-To|Delivered-to|Return-Path|List-Id):"
+color header	 brightyellow     black  "^(subject):"
+color header	 cyan     black  "^(Date|Reply-To):"
+#color body	 cyan	    black  "((ftp|http|https)://|news:)[^ >)\"\t]+"
+color body	 cyan	    black  "((ftp|http|https)://|(file|news):|www\\.)[-a-z0-9_.:]*[a-z0-9](/[^][{} \t\n\r\"<>()]*[^][{} \t\n\r\"<>().,:!])?/?"
+color body	 yellow	    black    "[-a-z_0-9.+]+@[-a-z_0-9.]+"
+
+# flags
+color index	 brightyellow   red	~F		# Flagged
+color index	 brightwhite    default ~N		# New
+color index	 brightblue     black	~O		# Old
+color index	 magenta        black	~T		# Tagged
+color index	 brightred      default	~D		# Deleted
+
+
+
+# vim:set syntax=muttrc:

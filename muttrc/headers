@@ -1,0 +1,29 @@
+ignore *
+unignore from: to: Cc:
+unignore From Subject Date To Cc  
+unignore Reply-to:
+unignore Newsgroups Reply-To 
+unignore List-Id:
+unignore Resent-To:
+unignore X-Spam-Status: X-Spam-Flag: X-Falco-Bogosity: X-Bogosity:
+unhdr_order *
+hdr_order From: Subject: To: Cc: Bcc: Date: *
+
+unmy_hdr *		
+					# remove all extra headers first.
+
+my_hdr From: Raphael Marichez <raphael.marichez@polytechnique.org>
+my_hdr Bcc: Raphael Marichez <raphael.marichez@polytechnique.org>
+
+my_hdr X-GPG-fingerprint: 04EB 153A 6B28 3E80 87A9  9B4F A77C 4BDE 021C 5BD2
+my_hdr X-GPG-Key: http://subkeys.pgp.net:11371/pks/lookup?op=get&search=0x021C5BD2
+
+alternates (raphael\.marichez(\.(20)?02)?|falco)([+_].+)?@(polytechnique|m4x)\.org
+alternates falco([+_].+)?@melix\.(org|net)
+alternates raphael\.marichez@(polytechnique\.(fr|edu)|hsc\.fr)
+alternates falco([+_].+)?@falcal\.(net|org)
+alternates falco([+_].+)?@falco\.bz
+alternates falco@gentoo\.org
+alternates (r(aphael)?|f(alco)?)@marichez.eu
+
+# vim:set syntax=muttrc:

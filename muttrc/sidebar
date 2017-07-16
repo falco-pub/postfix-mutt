@@ -1,0 +1,20 @@
+# set up the sidebar, default visible
+set sidebar_width=22
+set sidebar_visible=yes
+set sidebar_divider_char=" "
+#set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%4S"
+
+# color of folders with new mail
+color sidebar_new yellow default
+
+# ctrl-n, ctrl-p to select next, prev folder
+# ctrl-o to open selected folder
+bind index,pager <Esc><Up> sidebar-prev
+bind index,pager <Esc><Down> sidebar-next
+bind index,pager <Esc><Right> sidebar-open
+
+# toggles sidebar visibility
+macro index,pager <Esc><Left> '<enter-command>toggle sidebar_visible<enter>'
+
+# vim:set syntax=muttrc:

@@ -1,0 +1,46 @@
+unhook *                # remove all hooks
+
+# gzip:
+append-hook     \\.gz$  "gzip -c %t >> %f"
+open-hook       \\.gz$  "gzip -cd %f > %t"
+close-hook      \\.gz$  "gzip -c %t > %f"
+
+# bzip2:
+open-hook       \\.bz2$ "bzip2 -cd %f > %t"
+close-hook      \\.bz2$ "bzip2 -c %t > %f"
+
+# PGP:
+open-hook  \\.gpg$ "gpg --decrypt < %f > %t"
+close-hook \\.gpg$ "gpg --encrypt --recipient 0x021C5BD2 < %t > %f"
+
+
+charset-hook US-ASCII     UTF-8
+charset-hook x-unknown    UTF-8
+charset-hook windows-1250 CP1250
+charset-hook windows-1251 CP1251
+charset-hook windows-1252 CP1252
+charset-hook windows-1253 CP1253
+charset-hook windows-1254 CP1254
+charset-hook windows-1255 CP1255
+charset-hook windows-1256 CP1256
+charset-hook windows-1257 CP1257
+charset-hook windows-1258 CP1258
+
+
+#folder-hook ~/.maildir$ 'push T~r>2m!~F\n'
+#folder-hook ~/.maildir/.secunia 'push D~r>2w!~F\n\;'
+#folder-hook ~/.maildir/.postfix.postfix-users 'push \eVD~r>2w!~F\n\;'
+#folder-hook ~/.maildir/.postfix.postfix-devel 'push \eVD~r>2m!~F\n\;'
+#folder-hook . 'push \eVT~O \n;N^t \n' #collapse all threads when entering a folder
+folder-hook . 'push \eV' #collapse all threads when entering a folder
+
+# only match "To" address for send-hooks:
+#
+set default_hook="~t %s"
+
+send-hook @((lists\.)?gentoo\.org|lst\.de) my_hdr From: Raphael Marichez <falco@gentoo.org>
+send-hook @((lists\.)?gentoo\.org|lst\.de) my_hdr Organization: Gentoo Linux Security Team
+send-hook @((lists\.)?gentoo\.org|lst\.de) "set signature=~/.mutt/signature_gentoo"
+
+
+# vim:set syntax=muttrc:
