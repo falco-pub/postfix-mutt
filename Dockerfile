@@ -1,7 +1,6 @@
 FROM alpine:3.6
 RUN apk update
 RUN apk add --no-cache --update gcc musl-dev make
-RUN apk add --no-cache --update bash gnupg1 vim w3m
 RUN apk add --no-cache --update ncurses-dev gpgme-dev openssl-dev cyrus-sasl-dev gdbm-dev libidn-dev 
 RUN apk add --no-cache --update postfix ca-certificates supervisor rsyslog bash openssl
 
@@ -66,6 +65,8 @@ RUN mkdir -p $HOME/.mutt/cache/headers $HOME/.mutt/cache/bodies \
 
 ENV LANG C.UTF-8
 ENV TERM xterm-256color
+
+RUN apk add --no-cache --update gnupg1 vim w3m
 
 USER root
 EXPOSE 25
