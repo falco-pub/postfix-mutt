@@ -1,0 +1,32 @@
+#application/pdf;acroread %s
+application/pdf;xpdf %s
+application/vnd.rn-rn_music_package;freeamp %s
+application/x-freeamp-theme;freeamp %s
+audio/mp3;freeamp %s
+audio/mpeg;freeamp %s
+audio/mpegurl;freeamp %s
+audio/scpls;freeamp %s
+audio/x-mp3;freeamp %s
+audio/x-mpeg;freeamp %s
+audio/x-mpegurl;freeamp %s
+audio/x-scpls;freeamp %s
+application/x-dos_ms_word; /usr/bin/antiword %s; description="Microsoft Word-for-Windows Document"; copiousoutput
+application/msword;        /usr/bin/antiword %s; description="Microsoft Word-for-Windows Document"; copiousoutput
+text/html; w3m -T text/html '%s'; description="HTML"; copiousoutput
+image/jpeg;gqview %s
+image/jpg;gqview %s
+image/pjpeg;gqview %s
+image/gif; gqview %s
+image/png; gqview %s
+image/bmp; gqview %s
+application/pgp-keys; pgp -f < %s ; copiousoutput
+text/x-vcard; mutt.vcard.filter < %s ; copiousoutput
+text/x-patch; cat '%s'; copiousoutput
+application/pgp; cat '%s' | gpg; copiousoutput
+application/x-pkcs7-signature;openssl pkcs7 -in %s -inform der -noout -print_certs -text | less; needsterminal
+application/vnd.sun.xml.writer; ooffice2 %s
+application/vnd.sun.xml.calc; ooffice2 %s
+application/vnd.oasis.opendocument.text; ooffice2 %s
+text/plain; vim %s
+application/x-tar-gz; tar tvzf %s | less; needsterminal
+
