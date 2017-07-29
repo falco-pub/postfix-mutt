@@ -65,9 +65,10 @@ RUN mkdir -p $HOME/.mutt/cache/headers $HOME/.mutt/cache/bodies \
 ENV LANG C.UTF-8
 ENV TERM xterm-256color
 
-RUN apk add --no-cache --update gnupg1 vim w3m
 
 USER root
+RUN apk add --no-cache --update gnupg1 vim w3m
+
 EXPOSE 25
 
 VOLUME /var/log
