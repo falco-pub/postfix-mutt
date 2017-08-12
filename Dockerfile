@@ -7,10 +7,9 @@ RUN apk add --no-cache --update postfix ca-certificates supervisor rsyslog bash 
 COPY /etc/supervisord.conf /etc/
 
 COPY /etc/postfix/* /etc/postfix/
-RUN mkdir /etc/postfix/user
-RUN touch /etc/postfix/user/saslpass
+RUN touch /etc/postfix/saslpass
 RUN newaliases
-RUN postmap /etc/postfix/user/saslpass
+RUN postmap /etc/postfix/saslpass
 
 RUN openssl req -x509 -newkey rsa:4096 -keyout /etc/postfix/ssl.key -out /etc/postfix/ssl.crt -nodes -days 365 -subj '/CN=mx1.pfix'
 
