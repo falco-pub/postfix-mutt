@@ -16,7 +16,7 @@ RUN openssl req -x509 -newkey rsa:4096 -keyout /etc/postfix/ssl.key -out /etc/po
 
 ENV pkg_version="1.8.3"
 RUN gpg --list-keys
-RUN gpg --recv-keys 0xadef768480316bda
+RUN gpg --recv-keys --keyserver hkp://pgp.mit.edu 0xadef768480316bda
 RUN wget ftp://ftp.mutt.org/pub/mutt/mutt-${pkg_version}.tar.gz
 RUN wget ftp://ftp.mutt.org/pub/mutt/mutt-${pkg_version}.tar.gz.asc
 RUN gpg --verify mutt-${pkg_version}.tar.gz.asc
