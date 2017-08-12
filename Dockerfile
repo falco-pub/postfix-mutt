@@ -15,7 +15,6 @@ RUN postmap /etc/postfix/user/saslpass
 RUN openssl req -x509 -newkey rsa:4096 -keyout /etc/postfix/ssl.key -out /etc/postfix/ssl.crt -nodes -days 365 -subj '/CN=mx1.pfix'
 
 ENV pkg_version="1.8.3"
-RUN gpg --list-keys
 RUN gpg --recv-keys --keyserver hkp://pgp.mit.edu 0xadef768480316bda
 RUN wget ftp://ftp.mutt.org/pub/mutt/mutt-${pkg_version}.tar.gz
 RUN wget ftp://ftp.mutt.org/pub/mutt/mutt-${pkg_version}.tar.gz.asc
@@ -66,9 +65,10 @@ RUN mkdir -p $HOME/.mutt/cache/headers $HOME/.mutt/cache/bodies \
 ENV LANG C.UTF-8
 ENV TERM xterm-256color
 
-RUN apk add --no-cache --update gnupg1 vim w3m
 
 USER root
+RUN apk add --no-cache --update gnupg1 vim w3m
+
 EXPOSE 25
 
 VOLUME /var/log
