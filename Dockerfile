@@ -71,7 +71,6 @@ RUN apk add --no-cache --update gnupg1 vim w3m
 EXPOSE 25
 
 VOLUME /var/log
-VOLUME /etc/postfix/user
 
 COPY run.sh .
 CMD ["./run.sh"]
