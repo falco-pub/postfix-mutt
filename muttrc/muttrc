@@ -8,7 +8,7 @@ unset mark_old		# mark new articles as old, when leaving mbox
 set pager_stop		# Don't jump to next message at end of message.
 set rfc2047_parameters=yes	# decode RFC2047 parameters
 unset save_empty	# remove mailbox when last message is removed.
-set use_envelope_from
+#unset use_envelope_from
 
 # Quadoptions 
 set abort_nosubject=ask-no	# Abort, if message has no subject.
