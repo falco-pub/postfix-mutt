@@ -13,6 +13,7 @@ popd
 
 [ -r /etc/postfix/ssl.key ] && [ -r /etc/postfix/ssl.crt ] || openssl req -x509 -newkey rsa:4096 -keyout /etc/postfix/ssl.key -out /etc/postfix/ssl.crt -nodes -days 365 -subj '/CN=mx1.pfix'
 
+pushd /
 /usr/bin/supervisord
 
 

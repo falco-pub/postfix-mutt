@@ -60,10 +60,10 @@ USER user
 
 RUN mkdir -p $HOME/.mutt/cache/headers $HOME/.mutt/cache/bodies \
 	&& touch $HOME/.mutt/certificates
+RUN mkdir -p $HOME/workdir
 
 ENV LANG C.UTF-8
 ENV TERM xterm-256color
-
 
 USER root
 RUN apk add --no-cache --update gnupg1 vim w3m
@@ -72,5 +72,5 @@ EXPOSE 25
 
 VOLUME /var/log
 
-COPY run.sh .
-CMD ["./run.sh"]
+COPY run.sh /
+CMD ["/run.sh"]
